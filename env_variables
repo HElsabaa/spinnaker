@@ -1,0 +1,4 @@
+# Name Space
+ name_space : istio-system
+# Installation Options
+ options : "--time-out 600 --debug"

@@ -1,0 +1,3 @@
+---
+- import_playbook: playbooks/configure_nodes.yml
+- import_playbook: playbooks/configure_spinnaker.yml

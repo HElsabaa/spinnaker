@@ -1,0 +1,7 @@
+---
+- hosts: kubernetes-master-nodes
+  vars_files:
+  - env_variables
+  tasks:
+  - name: Install Spinnaker  using Helm
+    shell: helm install stable/spinnaker --name spinnaker --namespace {{ name_space }} {{ options }}

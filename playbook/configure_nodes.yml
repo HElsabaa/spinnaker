@@ -1,0 +1,25 @@
+---
+- hosts: kubernetes-master-nodes
+  tasks:
+  - name: Create StorageClass
+    shell: kubectl apply -f ../sc.yaml
+---
+- hosts: all
+  tasks:
+  - name: Enable IP tables accept
+    shell: iptables -P FORWARD ACCEPT
+
+  - name: Enable IP Forwarding
+    shell: echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+
+  - name: Apply IP Forwarding
+    shell: sysctl -p /etc/sysctl.conf
+
+  - name: Flush IP tables
+    shell: iptables -F
+
+  - name: Restart Network
+    shell: service network restart
+
+  - name: Restart Kubelet Service
+    shell: service kubelet restart
