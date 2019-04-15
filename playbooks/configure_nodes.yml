@@ -2,7 +2,7 @@
 - hosts: kubernetes-master-nodes
   tasks:
   - name: Create StorageClass
-    shell: kubectl apply -f ../sc.yaml
+    shell: kubectl apply -f sc.yaml
 ---
 - hosts: all
   tasks:
